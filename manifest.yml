@@ -1,0 +1,10 @@
+applications:
+- services:
+  - pftestapp_db
+  disk_quota: 1024M
+  host: pftestapp
+  name: pftestapp
+  path: .
+  domain: mybluemix.net
+  instances: 1
+  memory: 256M

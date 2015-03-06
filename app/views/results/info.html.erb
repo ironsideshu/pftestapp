@@ -1,0 +1,12 @@
+<div class="container">
+
+	<h1>Results</h1><br>
+	<% if @response != nil %> 
+		<% @response.each do |elem| %>
+			<strong><%= elem.at(0) %></strong><%=" : " + elem.at(1)%><br>
+		<% end %>
+	<% else %>
+		<%= "No Member for ID " + params[:member_id] %>
+	<% end %>
+
+</div>

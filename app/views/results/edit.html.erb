@@ -1,0 +1,25 @@
+<div class="container">
+
+	<h1>Edit Existing Member</h1><br>
+	<% if @response != nil %> 
+		<% @response.each do |elem| %>
+			<% if elem.at(0) != "_id" and elem.at(0) != "_rev" %>
+				<strong><%= elem.at(0) %></strong><%=" : " + elem.at(1)%><br>
+			<% end %>
+		<% end %>
+		<br>
+		<%= simple_form_for @document do |f| %>
+			<% @document[:member_id] = params[:member_id] %>
+			<%= f.input :first_name, label: "First Name" %>
+			<%= f.input :last_name, label: "Last Name" %>
+			<%= f.input :phone, placeholder: "ex: 999-999-9999" %>
+			<%= f.input :email, placeholder: "ex: example@host.com" %>
+			<%= f.input :member_type, label: "Membership Type", as: :radio_buttons, collection: ["Black Card", "Standard Card"], checked: ["Black Card"] %>
+			<%= f.input :is_active, label: "Is Member Active?", as: :radio_buttons, collection: ["Yes", "No"], checked: ["Yes"] %>
+			<%= f.button :submit, 'Edit Existing Member ' + params[:member_id], data: { disable_with: 'Please Wait...' }%>
+		<% end %>
+	<% else %>
+		<%= "No Member for ID " + params[:member_id] + " exists!" %>
+	<% end %>
+
+</div>

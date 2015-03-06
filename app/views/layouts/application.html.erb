@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Planet Fitness Affinity Test App</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+	<link rel="pf icon" href="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/c12.12.155.155/s50x50/182590_296938530440403_1228643896_n.jpg?oh=ac26da8e1693a1708daceb62e2aaefec&oe=55904D53&__gda__=1435576008_744647192bbe20f83a62e9b216ad7c4f"/>
+</head>
+<body>
+
+	<div>
+		<ul>
+		</ul>
+		<div class='alert alert-info'>
+			<h1>
+				<strong>
+					Planet Fitness Affinity Program Test Application
+				</strong>
+			</h1>
+			<% if session[:authHeader] != nil %>
+			
+				<p><%= link_to 'Create New Member Into Cloudant', '/documents/new' %></p>
+				<p><%= link_to 'Look Up Member Info From Cloudant', '/documents/show' %></p>
+				<p><%= link_to 'Modify Member Info In Cloudant', '/documents/update' %></p>
+				<p><%= link_to 'Log Out', '/documents/signin' %></p>
+
+			<% end %>
+		</div>
+		<%= yield %>
+	</div>
+
+</body>
+</html>

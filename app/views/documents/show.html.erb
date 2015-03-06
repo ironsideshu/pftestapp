@@ -1,0 +1,10 @@
+<div class="container">
+
+	<h1>Member Search</h1>
+
+	<%= simple_form_for @memberID do |f| %>
+		<%= f.input :member_id, label: 'Member ID', id: 'text_field' %>
+		<%= f.button :submit, 'Look-up Member Info', id: 'submitButtonId', data: { disable_with: 'Please Wait...' } %>
+	<% end %>
+
+</div>

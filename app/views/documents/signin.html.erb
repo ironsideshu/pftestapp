@@ -1,0 +1,11 @@
+<div class="container">
+
+	<h1>Sign In</h1>
+
+	<%= simple_form_for @signin do |f| %>
+		<%= f.input :username, label: 'Username' %>
+		<%= f.input :password, label: 'Password' %>
+		<%= f.button :submit, 'Sign Into Cloudant (database: pf_db_test)', data: { disable_with: 'Please Wait...' } %>
+	<% end %>
+
+</div>
