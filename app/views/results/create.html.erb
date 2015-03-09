@@ -1,0 +1,12 @@
+<div class="container">
+
+	<h1><%= "Updated Member " + params[:member_id] %> </h1>
+
+	<strong><%= "_id" %></strong><%=" : " + params[:dbID] %><br>
+	<strong><%= "_rev" %></strong><%=" : " + params[:dbRev] %><br>
+	<% params[:result].each do |elem| %>
+		<strong><%= elem.at(0) %></strong><%=" : " + elem.at(1)%><br>
+	<% end %>
+
+
+</div>

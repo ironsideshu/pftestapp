@@ -1,9 +1,9 @@
 <div class="container">
 
-  <h1>Created</h1>
-  
-  <%= params[:document].each do |f| %>
-  <%= f %><br>
-  <% end %>
+	<h1>Created</h1>
+
+	<% params[:document].each do |elem| %>
+		<strong><%= elem.at(0) %></strong><%=" : " + elem.at(1)%><br>
+	<% end %>
 
 </div>

@@ -15,8 +15,12 @@ class ResultsController < ApplicationController
 		@response = (eval(JSON.parse(res.body)["docs"].to_s)).at(0)
 	end
 
+	def modify
+		@memberID = ""
+	end
+
 	def edit
-		@document = Document.new
+		@changes = Result.new
 
 		id = params[:member_id]
 
@@ -51,5 +55,27 @@ class ResultsController < ApplicationController
 		else
 			redirect_to :controller => 'documents', :action => 'signin'
 		end
+	end
+
+	def create
+		url = URI.parse('https://pfdatastoredev.cloudant.com/pf_db_test/'+params[:dbID])
+		http = Net::HTTP.new(url.host, url.port)
+		http.use_ssl = true
+
+		req = Net::HTTP::Put.new(url.request_uri)
+		req["content-type"] = "application/json"
+		req["cookie"] = session[:authHeader]
+		req.body = 
+		"{\"member_id\":\""+params[:member_id]+
+		"\",\"first_name\":\""+(params[:result])['first_name']+
+		"\",\"last_name\":\""+(params[:result])['last_name']+
+		"\",\"phone\":\""+(params[:result])['phone']+
+		"\",\"email\":\""+(params[:result])['email']+
+		"\",\"member_type\":\""+(params[:result])['member_type']+
+		"\",\"is_active\":\""+(params[:result])['is_active']+
+		"\",\"_rev\":\""+params[:dbRev]+
+		"\"}" 
+
+		res = Net::HTTP.start(url.host, url.port) { http.request(req) }
 	end
 end
