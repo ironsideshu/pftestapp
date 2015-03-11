@@ -6,7 +6,7 @@
 			<strong><%= elem.at(0) %></strong><%=" : " + elem.at(1)%><br>
 		<% end %>
 	<% else %>
-		<%= "No Member for ID " + params[:member_id] %>
+		<%= "No Member for " + params[:search]["search_type"] + " = " + params[:search]["input"] %>
 	<% end %>
 
 </div>

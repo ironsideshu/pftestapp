@@ -3,13 +3,17 @@
   <h1>Create New Member</h1>
 
   <%= simple_form_for @document do |f| %>
+    <%= f.input :barcode, label: "Barcode" %>
     <%= f.input :member_id, label: "Member ID" %>
     <%= f.input :first_name, label: "First Name" %>
     <%= f.input :last_name, label: "Last Name" %>
     <%= f.input :phone, placeholder: "ex: 999-999-9999" %>
     <%= f.input :email, placeholder: "ex: example@host.com" %>
-    <%= f.input :member_type, label: "Membership Type", as: :radio_buttons, collection: ["Black Card", "Standard Card"], checked: ["Black Card"] %>
-    <%= f.input :is_active, label: "Is Member Active?", as: :radio_buttons, collection: ["Yes", "No"], checked: ["Yes"] %>
+    <%= f.input :member_type, label: "Membership Type", placeholder: "ex: BCM, 10NR, FMBC..." %>
+    <%= f.input :status_code, label: "Status Code", placeholder: "ex: UPL, RFC, LNK..." %>
+    <%= f.input :status_code_descr, label: "Status Code Description" %>
+    <%= f.input :is_active, label: "Is Member Active?", as: :radio_buttons, collection: ["Active", "Inactive"], checked: ["Active"] %>
+    <%= f.input :pay_status, label: "Payment Status" %>
     <%= f.button :submit, 'Create Member', data: { disable_with: 'Please Wait...' } %>
   <% end %>
 

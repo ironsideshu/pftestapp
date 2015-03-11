@@ -21,14 +21,11 @@ class DocumentsController < ApplicationController
 	end
 
 	def show
-		@memberID = ""
-	end
-
-	def update
-		@memberID = ""
 	end
 
 	def create 
+		(params[:document])['is_active'] == "Active" ? active = "ACT" : active = "INA"
+
 		url = URI.parse('https://pfdatastoredev.cloudant.com/pf_db_test')
 		http = Net::HTTP.new(url.host, url.port)
 		http.use_ssl = true
@@ -37,13 +34,17 @@ class DocumentsController < ApplicationController
 		req["content-type"] = "application/json"
 		req["cookie"] = session[:authHeader]
 		req.body = 
-		"{\"member_id\":\""+(params[:document])['member_id']+
-		"\",\"first_name\":\""+(params[:document])['first_name']+
-		"\",\"last_name\":\""+(params[:document])['last_name']+
-		"\",\"phone\":\""+(params[:document])['phone']+
-		"\",\"email\":\""+(params[:document])['email']+
-		"\",\"member_type\":\""+(params[:document])['member_type']+
-		"\",\"is_active\":\""+(params[:document])['is_active']+
+		"{\"BARCODE\":\""+(params[:document])['barcode']+
+		"\",\"MEMBER_NUMBER_ORGNL\":\""+(params[:document])['member_id']+
+		"\",\"MEMBER_FIRST_NAME\":\""+(params[:document])['first_name']+
+		"\",\"MEMBER_LAST_NAME\":\""+(params[:document])['last_name']+
+		"\",\"PRIMARY_PHONE\":\""+(params[:document])['phone']+
+		"\",\"EMAIL_ADDRESS\":\""+(params[:document])['email']+
+		"\",\"MEMBER_TYPE\":\""+(params[:document])['member_type']+
+		"\",\"STATUS_CODE\":\""+(params[:document])['status_code']+
+		"\",\"MEMBER_STATUS_CODE_DESCRIPTION\":\""+(params[:document])['status_code_descr']+
+		"\",\"ACTIVE_INDICATOR\":\""+active+
+		"\",\"PAYMENT_STATUS\":\""+(params[:document])['pay_status']+
 		"\"}" 
 
 		res = Net::HTTP.start(url.host, url.port) { http.request(req) }

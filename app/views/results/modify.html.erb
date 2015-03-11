@@ -2,8 +2,9 @@
 
   <h1>Edit Existing Member</h1>
 
-  <%= simple_form_for @memberID do |f| %>
-    <%= f.input :member_id, label: 'Member ID', id: 'text_field' %>
+  <%= simple_form_for :search do |f| %>
+    <%= f.input :search_type, label: 'Search Method', as: :select, collection: ["BARCODE", "MEMBER_NUMBER_ORGNL", "EMAIL_ADDRESS"] %>
+	<%= f.input :input, label: 'Input' %>
     <%= f.button :submit, 'Look-up For Member Existence', id: 'submitButtonId', data: { disable_with: 'Please Wait...' } %>
   <% end %>
 
