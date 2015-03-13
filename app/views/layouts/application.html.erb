@@ -12,19 +12,35 @@
 	<div>
 		<ul>
 		</ul>
-		<div class='alert alert-info'>
+		<div class='alert alert-info' align='center'>
 			<h1>
 				<strong>
 					Planet Fitness Affinity Program Test Application
 				</strong>
 			</h1>
 			<% if session[:authHeader] != nil %>
-			
-				<p><%= link_to 'Create New Member Into Cloudant', '/documents/new' %></p>
-				<p><%= link_to 'Look Up Member Info From Cloudant', '/documents/show' %></p>
-				<p><%= link_to 'Modify Member Info In Cloudant', '/results/modify' %></p>
-				<p><%= link_to 'Log Out', '/documents/signin' %></p>
-
+				<p>
+				<%= link_to '/documents/new' do %>
+					<button class="btn btn-default btn-black">
+						<i class="glyphicon glyphicon-plus"></i> Create New Member Into Cloudant
+					</button>
+				<% end %>
+				<%= link_to '/documents/show' do %>
+					<button class="btn btn-default btn-black">
+						<i class="glyphicon glyphicon-search"></i><%= " Look Up Member Info From Cloudant" %>
+					</button>
+				<% end %>
+				<%= link_to '/results/modify' do %>
+					<button class="btn btn-default btn-black">
+						<i class="glyphicon glyphicon-pencil"></i><%= " Modify Member Info In Cloudant" %>
+					</button>
+				<% end %>
+				<%= link_to '/documents/signin' do %>
+					<button class="btn btn-default btn-black">
+						<i class="glyphicon glyphicon-log-out"></i><%= " Log Out" %>
+					</button>
+				<% end %>
+				</p>
 			<% end %>
 		</div>
 		<%= yield %>

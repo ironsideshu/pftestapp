@@ -35,7 +35,7 @@ class DocumentsController < ApplicationController
 		req["cookie"] = session[:authHeader]
 		req.body = 
 		"{\"BARCODE\":\""+params[:document]['barcode'].upcase+
-		"\",\"MEMBER_NUMBER_ORGNL\":\""+params[:document]['member_id'].upcase+
+		"\",\"MEMBER_NUMBER_UNIQUE\":\""+params[:document]['member_id'].upcase+
 		"\",\"MEMBER_FIRST_NAME\":\""+params[:document]['first_name'].upcase+
 		"\",\"MEMBER_LAST_NAME\":\""+params[:document]['last_name'].upcase+
 		"\",\"PRIMARY_PHONE\":\""+params[:document]['phone'].upcase+

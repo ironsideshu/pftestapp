@@ -54,7 +54,7 @@ class ResultsController < ApplicationController
 
 		req.body = 
 		"{\"BARCODE\":\""+params[:barcode].upcase+
-		"\",\"MEMBER_NUMBER_ORGNL\":\""+params[:member_id]+
+		"\",\"MEMBER_NUMBER_UNIQUE\":\""+params[:member_id]+
 		"\",\"MEMBER_FIRST_NAME\":\""+params[:result]['first_name'].upcase+
 		"\",\"MEMBER_LAST_NAME\":\""+params[:result]['last_name'].upcase+
 		"\",\"PRIMARY_PHONE\":\""+params[:result]['phone'].upcase+
