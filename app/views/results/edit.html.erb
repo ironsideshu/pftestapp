@@ -1,7 +1,8 @@
 <div class="container">
 
-	<h1>Edit Existing Member</h1><br>
 	<% if @response != nil %> 
+		<h1>Edit Existing Member</h1><br>
+
 		<% @response.each do |elem| %>
 			<% if elem.at(0) == "_id" %>
 				<% @dbID = elem.at(1) %>
@@ -38,7 +39,7 @@
 			<%= f.button :submit, 'Edit Existing Member (Barcode ' + @barcode + ')', :order => "temp",  data: { disable_with: 'Please Wait...' } %>
 		<% end %>
 	<% else %>
-		<%= "No Member for ID " + params[:member_id] + " exists!" %>
+		<h1><%= "No Member Exists for " + params[:search]["search_type"] + " " + params[:search]["input"] %></h1>
 	<% end %>
 
 </div>
