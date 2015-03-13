@@ -1,0 +1,19 @@
+<br>
+
+<% if @response.at(0) != nil %>
+	<% @counter = 0 %>
+	<% @response.each do |doc| %>
+		<hr align="middle" width="100%">
+		<% @counter = @counter + 1 %>
+		<h3><%= "Perk #" + @counter.to_s %></h3>
+		<% doc.each do |elem| %>
+			<% if elem.at(0) != "_id" && elem.at(0) != "_rev" %>
+				<strong><%= elem.at(0) %></strong><%=" : " + elem.at(1) %><br>
+			<% end %>
+		<% end %>	
+	<% end %>	
+	<hr align="middle" width="100%">
+<% else %>
+	<h3><%= "No Perks Exist for Member (Barcode " + session[:barcode] + ")" %></h3>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<% end %>

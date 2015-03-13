@@ -24,6 +24,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'simple_form', '3.1.0.rc2'
 gem 'bootstrap-sass'
 gem 'json'
+gem 'responders'
 #gem 'ibm_db'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

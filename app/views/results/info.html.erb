@@ -1,12 +1,34 @@
 <div class="container">
 
-	<h1>Results</h1><br>
 	<% if @response != nil %> 
-		<% @response.each do |elem| %>
-			<strong><%= elem.at(0) %></strong><%=" : " + elem.at(1)%><br>
-		<% end %>
+		<h1><%= "Member Info (Barcode " + @barcode + ")" %></h1><br>
+		<div>
+			<%= link_to controller: 'perks', action: 'add_perk', method: 'get', remote: true do %>
+				<button class="btn btn-default">
+					<%= "Add New Perk to Member" %>
+				</button>
+			<% end %>
+
+			<%= link_to controller: 'perks', action: 'view_perks', method: 'get', remote: true do %>
+				<button class="btn btn-default">
+					<%= "View All Perks of Member" %>
+				</button>
+			<% end %>
+		</div>
+
+		<div class="container">
+			<div class="col-md-6" id="perk-form" style="display:none;"></div>
+
+			<div>
+				<br><br>
+				<% @response.each do |elem| %>
+					<strong><%= elem.at(0) %></strong><%=" : " + elem.at(1) %><br>
+				<% end %>
+			</div>
+		</div>
+
 	<% else %>
-		<%= "No Member for " + params[:search]["search_type"] + " = " + params[:search]["input"] %>
+		<h1><%= "No Member for " + params[:search]["search_type"] + " = " + params[:search]["input"] %></h1>
 	<% end %>
 
 </div>

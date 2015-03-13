@@ -2,24 +2,22 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  get 'results/modify'
-  get 'results/edit'
-  get 'results/updated'
+  root :to => redirect('documents/signin')
 
+  get 'results/modify'
+  get 'results/updated'
   get 'documents/signin'
-  get 'documents/create'
-  get 'documents/new'
-  get 'documents/show'
-  get 'documents/update'
+  get 'perks/view_perks'
+  get 'perks/add_perk'
 
   resources :documents
   resources :results
-
-  root :to => redirect('documents/signin')
+  resources :perks
 
   post "documents/signin" => "results#menu"
   post "documents/show" => "results#info"
   post "results/modify" => "results#edit"
+  post "perks/add_perk" => "perks#create"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

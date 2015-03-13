@@ -1,0 +1,5 @@
+<br>
+<h3><%= "Perk Added to Member (Barcode " + session[:barcode] + ")" %></h3>
+<% @response.each do |elem| %>
+	<strong><%= elem.at(0) %></strong><%=" : " + elem.at(1)%><br>
+<% end %>

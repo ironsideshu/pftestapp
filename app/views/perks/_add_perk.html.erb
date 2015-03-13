@@ -1,0 +1,15 @@
+<br>
+
+<%= simple_form_for @perk, remote: true do |f| %>
+  <%= f.input :program, label: "Affinity Program" %>
+  <%= f.input :brand, label: "Affinity Brand" %>
+  <%= f.input :perk_name, label: "Perk Name" %>
+  <%= f.input :perk_descr, label: "Perk Description" %>
+  <%= f.input :open_time, label: "Perk Open Date and Time" %>
+  <%= f.input :click_time, label: "Perk Clicked Date and Time" %>
+  <%= f.input :redeemed_time, label: "Perk Redeemed Date and Time" %>
+  <%= f.input :redeemed_loc, label: "Perk Redeemed Location" %>
+  <%= f.input :gross_amt, label: "Perk Gross Revenue Amount" %>
+  <%= f.input :discount_amt, label: "Perk Discount Amount" %>
+  <%= f.button :submit, controller: 'perks', action: 'create', method: 'post', remote: true, data: { disable_with: 'Please Wait...' } %>
+<% end %>

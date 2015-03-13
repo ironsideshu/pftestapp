@@ -1,12 +1,17 @@
 <div class="container">
+	
+	<% if @status_code == "201" %>
+		<h1><%= "Updated Member (Barcode " + params[:barcode] + ')' %> </h1>
 
-	<h1><%= "Updated Member (Barcode " + params[:barcode] + ')' %> </h1>
-
-	<strong><%= "_id" %></strong><%=" : " + params[:dbID] %><br>
-	<strong><%= "_rev" %></strong><%=" : " + params[:dbRev] %><br>
-	<% params[:result].each do |elem| %>
-		<strong><%= elem.at(0) %></strong><%=" : " + elem.at(1)%><br>
+		<strong><%= "_id" %></strong><%=" : " + params[:dbID] %><br>
+		<strong><%= "_rev" %></strong><%=" : " + params[:dbRev] %><br>
+		<% @response.each do |elem| %>
+			<% if elem.at(0) != '_rev' %>
+				<strong><%= elem.at(0) %></strong><%=" : " + elem.at(1)%><br>
+			<% end %>	
+		<% end %>
+	<% else %>
+		<h1><%= "DID NOT UPDATE Member (Barcode " + params[:barcode] + ') CORRECTLY' %> </h1>
 	<% end %>
-
 
 </div>

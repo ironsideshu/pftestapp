@@ -2,8 +2,8 @@
 
 	<h1><%= "Created New Member (Barcode " + params[:document]['barcode'] + ')' %> </h1>
 
-	<% params[:document].each do |elem| %>
+	<% @response.each do |elem| %>
 		<strong><%= elem.at(0) %></strong><%=" : " + elem.at(1)%><br>
 	<% end %>
-
+	
 </div>
